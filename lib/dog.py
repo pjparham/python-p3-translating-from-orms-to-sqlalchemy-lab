@@ -8,7 +8,7 @@ def save(session, dog):
     session.commit()
 
 def get_all(session):
-    return session.query(Dog)
+    return session.query(Dog).all()
     # dogs = session.query(Dog)
     # return [dog for dog in dogs]
 
@@ -26,7 +26,7 @@ def find_by_id(session, id):
     #     return record
 
 def find_by_name_and_breed(session, name, breed):
-    return session.query(Dog).filter(Dog.name.like(name), Dog.breed == breed).first()
+    return session.query(Dog).filter(Dog.name.like(name) and Dog.breed == breed).first()
     # query = session.query(Dog).filter(Dog.name.like(name),
     #     Dog.breed == breed).all()
     # for record in query:
